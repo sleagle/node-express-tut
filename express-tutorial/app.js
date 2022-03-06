@@ -1,8 +1,25 @@
 const express = require('express')
+const authorize = require('./authorize')
+const logger = require('./logger-middleware')
 const app = express()
 
-app.get('/', (req,res) => {
-    res.json([{name: "john"},{name: "sakna"}])
+// req=> middleware => res
+//app.use([logger,authorize])
+
+app.get('/',(req,res)=>{
+    res.send('Home')
+})
+
+app.get('/about',(req,res)=>{
+    res.send('About')
+})
+
+app.get('/api/products',(req,res)=>{
+    res.send('Products')
+})
+
+app.get('/api/items',(req,res)=>{
+    res.send('Items')
 })
 
 app.listen(5000, () => {
